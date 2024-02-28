@@ -27,6 +27,11 @@ app.use(express.urlencoded({ extended: false }))
 app.use(errorHandler)
 app.use(cors({ origin: true, credentials: true }))
 
+//some wuick fix to prevent from disconnection
+setInterval(() => {
+    db.query('select 1')
+}, 120000)
+
 
 app.get("/", (req, res) => {
     res.json({ message: "API is Running!" })
