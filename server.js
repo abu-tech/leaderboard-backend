@@ -57,6 +57,11 @@ app.get('/leaderboard/current-week', (req, res) => {
             return;
         }
 
+        if (results.length === 0) {
+            res.status(404).json({ error: 'Currently No Data Available' });
+            return;
+        }
+
         res.json(results);
     });
 });
@@ -80,6 +85,11 @@ app.get('/leaderboard/last-week/:country', (req, res) => {
         if (err) {
             console.error('Error fetching last week leaderboard:', err);
             res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+
+        if (results.length === 0) {
+            res.status(404).json({ error: 'Currently No Data Available' });
             return;
         }
 

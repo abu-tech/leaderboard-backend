@@ -16,11 +16,11 @@ db.connect((err) => {
     console.log('Connected to mysql database')
 })
 
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 10000; i++) {
     const name = faker.person.firstName()
     const score = Math.floor(Math.random() * 1000)
     const country = faker.location.countryCode('alpha-2')
-    const timestamp = moment(faker.date.between({ from: '2024-02-18T00:00:00.000Z', to: '2024-02-28T00:00:00.000Z' })).format('YYYY-MM-DD HH:mm:ss');
+    const timestamp = moment(faker.date.between({ from: '2024-03-3T00:00:00.000Z', to: '2024-03-6T00:00:00.000Z' })).format('YYYY-MM-DD HH:mm:ss');
     const UID = faker.string.uuid()
 
     const query = `INSERT INTO game_score (UID, Name, Score, Country, TimeStamp)
